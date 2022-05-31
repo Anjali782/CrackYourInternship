@@ -1,0 +1,30 @@
+ 
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> ans;
+void search(string t, string p)
+{
+ int l= t.length();
+ int l1= p.length();
+ int j=0;
+ for(int i=0;i<l;i++){
+  if(t[i]==p[j] && j<l1){
+      j++;
+  }else if(j==l1){
+      j=0;
+      int a= i-l1;
+      ans.push_back(a);
+  } else{
+      j=0;
+  }  
+ }   
+}
+
+int main()
+{
+    string t = "GEEKS FOR GEEKS";
+    string p = "GEEK";
+    search(t, p);
+    return 0;
+}
