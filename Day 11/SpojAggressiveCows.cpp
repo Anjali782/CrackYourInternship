@@ -33,11 +33,11 @@ class Solution
             }
             else 
             {
-                h=mid-1;
+                r=mid-1;
             }
         }
-       if(isvalid(a,n,cows,h)){
-         return h; 
+       if(isvalid(a,n,cows,r)){
+         return r; 
         }
        return l; 
     }
