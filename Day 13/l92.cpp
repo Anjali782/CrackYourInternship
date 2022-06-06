@@ -1,7 +1,7 @@
 class Solution {
   public:
   ListNode* reverseBetween(ListNode* head, int left, int right) {
-   vector v;
+   vector<int>v;
    int j=0;
    ListNode* temp=head;
       
