@@ -1,15 +1,12 @@
 Node* SortedMerge(Node* a, Node* b);
-void FrontBackSplit(Node* source,
-                    Node** frontRef, Node** backRef);
+void FrontBackSplit(Node* source,Node** frontRef, Node** backRef);
  
-/* sorts the linked list by changing next pointers (not data) */
 void MergeSort(Node** headRef)
 {
     Node* head = *headRef;
     Node* a;
     Node* b;
  
-    /* Base case -- length 0 or 1 */
     if ((head == NULL) || (head->next == NULL)) {
         return;
     }
@@ -20,13 +17,9 @@ void MergeSort(Node** headRef)
     /* Recursively sort the sublists */
     MergeSort(&a);
     MergeSort(&b);
- 
-    /* answer = merge the two sorted lists together */
     *headRef = SortedMerge(a, b);
 }
- 
-/* See https:// www.geeksforgeeks.org/?p=3622 for details of this
-function */
+
 Node* SortedMerge(Node* a, Node* b)
 {
     Node* result = NULL;
@@ -37,7 +30,6 @@ Node* SortedMerge(Node* a, Node* b)
     else if (b == NULL)
         return (a);
  
-    /* Pick either a or b, and recur */
     if (a->data <= b->data) {
         result = a;
         result->next = SortedMerge(a->next, b);
@@ -56,7 +48,6 @@ void FrontBackSplit(Node* source, Node** frontRef, Node** backRef)
     slow = source;
     fast = source->next;
  
-    /* Advance 'fast' two nodes, and advance 'slow' one node */
     while (fast != NULL) {
         fast = fast->next;
         if (fast != NULL) {
@@ -64,9 +55,7 @@ void FrontBackSplit(Node* source, Node** frontRef, Node** backRef)
             fast = fast->next;
         }
     }
- 
-    /* 'slow' is before the midpoint in the list, so split it in two
-    at that point. */
+
     *frontRef = source;
     *backRef = slow->next;
     slow->next = NULL;
